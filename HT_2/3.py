@@ -4,15 +4,19 @@
 
 
 def season(month):
-    if 3 <= month <= 5:
-        return "Весна"
+    if month < 1 or month > 12:
+        print("Ти з якої планети? На Землі 12 місяців.")
+        a = int(input("Номер місяця від 1 до 12: "))
+        season(a)
+    elif 3 <= month <= 5:
+        print("Весна")
     elif 6 <= month <= 8:
-        return "Літо"
+        print("Літо")
     elif 9 <= month <= 11:
-        return "Осінь"
+        print("Осінь")
     else:
-        return "Зима"
+        print("Зима")
 
 
 a = int(input("Номер місяця від 1 до 12: "))
-print(season(a))
+season(a)
