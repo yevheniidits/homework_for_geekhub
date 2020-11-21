@@ -21,8 +21,6 @@ def generator(lst):
     while True:
         for i in lst:
             yield i
-            continue
-        generator(lst)
 
 
 for elem in generator("asd"):
