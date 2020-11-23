@@ -124,7 +124,7 @@ def new_user():
 def operations(login):
     print("OPERATIONS")
     choice = int(input(
-        "1. Balance \n2. Deposit \n3. Withdraw\n4. Hystory\n5. Exit\n"))
+        "1. Balance \n2. Deposit \n3. Withdraw\n4. History\n5. Exit\n"))
     if choice == 1:
         balance(login)
     elif choice == 2:
