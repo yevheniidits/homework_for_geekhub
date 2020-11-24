@@ -220,6 +220,8 @@ def history(login):
 if __name__ == "__main__":
     print("WELCOME TO E-BANK\n")
     time.sleep(1)
+    # check if all necessary dirrectories are exists
+    # if not - create them
     if not os.path.exists(f"{path}/transactions/"):
         os.mkdir(f"{path}/transactions")
     if not os.path.exists(f"{path}/balance/"):
