@@ -366,7 +366,7 @@ def counter(withdr):
                             json.dump(cash, f)
                         return True
         else:
-            print(f"Sorry, but minimum bill is {a[-1]}")
+            print(f"Sorry, but minimum bill is {all_bills[-1]}")
             return False
 
 
