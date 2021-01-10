@@ -114,8 +114,8 @@ class Visitor(Person):
     def have_item(self):
         if self.own_items:
             print('Must return:')
-            for i, returns in enumerate(self.own_items):
-                print(i + 1, returns.title)
+            for i, returns in enumerate(self.own_items, 1):
+                print(i, returns.title)
         else:
             print('No items to return')
 
@@ -189,8 +189,8 @@ class Librarian(Person):
 
     def check_visitors(self):
         try:
-            for i, visitor in enumerate(Visitor.all_visitors):
-                print(i + 1, visitor.name)
+            for i, visitor in enumerate(Visitor.all_visitors, 1):
+                print(i, visitor.name)
         except IndexError:
             print('Wrong number')
 
