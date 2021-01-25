@@ -1,0 +1,29 @@
+{# Детальная информация о продукте с возможностью удалить/активировать/деактивировать/изменить продукт #}
+{% extends 'base_template.html' %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block context %}
+    <h1>{{ product.title }}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Delete">
+        {% if product.is_active %}
+            <input type="submit" name="action" value="Deactivate">
+            {% else %}
+                <input type="submit" name="action" value="Activate">
+        {% endif %}
+        <input type="submit" name="action" value="Edit">
+    </form><br>
+    {% if product.old_price > product.price %}
+        <s>{{ product.old_price }}</s> <br>
+    {% endif %}
+    <b>{{ product.price }}</b> <br>
+    <img src="{{ product.image.url }}" alt="No image" style="width:500px;height:500px;"/> <br>
+    {% if product.quantity > 0 %}
+        Quantity: {{ product.quantity }}
+        {% else %}
+            Not available
+    {% endif %}
+    <br>
+    {{ product.description }}
+{% endblock %}
