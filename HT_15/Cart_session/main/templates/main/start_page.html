@@ -1,0 +1,19 @@
+{% extends 'base_template.html' %}
+
+{% block title %}Main Page{% endblock %}
+{% block context %}
+<h1>All products</h1>
+    {% for product in products %}
+        <a href="{% url 'details' prod_id=product.id %}">
+            <img src="{{ product.image }}" alt="No image" style="width:250px;height:250px;"/> <br>
+            {{ product.title }}
+        </a> <br>
+        {% if product.old_price > product.price %}
+            <s>{{ product.old_price }}</s> <br>
+        {% endif %}
+        <b>{{ product.price }}</b><br>
+        {% if product.quantity <= 0 %}
+            Not available<br>
+        {% endif %}<br>
+    {% endfor %}
+{% endblock %}
