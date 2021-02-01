@@ -16,21 +16,19 @@ def product_details(request, prod_id):
     """Detailed information about product. Make changes with product depends on action"""
     action = request.POST.get('action')
     if request.POST:
+        product = Product.objects.filter(id=prod_id)
         # delete product
         if action == 'Delete':
-            product = Product.objects.filter(id=prod_id)
             messages.add_message(request, messages.INFO, f'{prod_id} deleted')
             product.delete()
             return redirect(reverse('start_page'))
         # deactivate product. set product.is_active=False. still available on 'deactivated.html' page
         if action == 'Deactivate':
-            product = Product.objects.filter(id=prod_id)
             messages.add_message(request, messages.INFO, f'{prod_id} deactivated')
             product.update(is_active=False)
             return redirect(reverse('details', args=(prod_id, )))
         # activate product. set product.is_active=True
         if action == 'Activate':
-            product = Product.objects.filter(id=prod_id)
             product.update(is_active=True)
             messages.add_message(request, messages.INFO, f'{prod_id} activated')
             return redirect(reverse('details', args=(prod_id, )))
