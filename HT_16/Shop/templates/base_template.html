@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+
+        {# navigation bar #}
+        <div class="topnav">
+            <a class="active" href="/">Main page</a>
+            {% if user.is_authenticated %}
+                <a href="/create">Create new product</a>
+                <a href="/deactivated">Show deactivated</a>
+                <a href="{% url 'cart' %}">Cart: {{ request.session.cart.items|length }}</a>
+                <a href="/logout" style="float: right">{{ request.user }} logout</a>
+            {% else %}
+                <a href="/login" style="float: right">Log in</a>
+            {% endif %}
+        </div>
+    </header>
+
+    {# messeges #}
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{ message }}")
+            {% endfor %}
+        {% endif %}
+    </script>
+
+    {% block context %}{% endblock %}
+
+</body>
+</html>

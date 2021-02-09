@@ -1,0 +1,22 @@
+{% extends 'base_template.html' %}
+
+{% block title %}Register{% endblock %}
+{% block context %}
+<form method="POST" action="">
+    {% csrf_token %}
+
+    {{ form.username.label }}<br>
+    {{ form.username }}<br>
+    {{ form.email.label }}<br>
+    {{ form.email }}<br>
+    {{ form.password1.label }}<br>
+    {{ form.password1 }}<br>
+    {{ form.password2.label }}<br>
+    {{ form.password2 }}<br>
+
+    {{ form.errors }}
+    <input type="submit" name="Create user" value="Registration">
+    <br>
+    Already have an account? Please <a href="/login">log in</a>
+</form>
+{% endblock %}

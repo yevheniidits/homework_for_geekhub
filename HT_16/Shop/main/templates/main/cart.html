@@ -1,0 +1,23 @@
+{% extends 'base_template.html' %}
+
+{% block title %}Cart{% endblock %}
+{% block context %}
+    <ol>
+        {% for prod_id, product in request.session.cart.items %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <li>Items: {{ product.buy_quantity }}<br>
+                    Price: {{ product.price }}<br>
+                    <a href="{% url 'details' prod_id %}">{{ product.title }}</a><br>
+                    <input type="hidden" name="prod_id" value="{{ prod_id }}">
+                    <input type="submit" name="action" value="+">
+                    <input type="submit" name="action" value="-">
+                    <input type="number" name="desire_quantity" value="1" step="1" min="1">
+                    <input type="submit" name="action" value="Add">
+                    <input type="submit" name="action" value="Remove">
+                </li>
+            </form>
+        {% endfor %}
+        <br>
+    </ol>
+{% endblock %}

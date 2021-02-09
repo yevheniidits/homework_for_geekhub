@@ -1,0 +1,20 @@
+{% extends 'base_template.html' %}
+{% load socialaccount %}
+
+{% block title %}Log In{% endblock %}
+{% block context %}
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        {{ form.errors }}
+        <input type="submit" name="Log in" value="Log in">
+        <br>
+        <a href="{% provider_login_url 'google' %}">Log in with Google</a>
+        <br>
+        No account? Please <a href="/register">register</a>
+    </form>
+
+{% endblock %}

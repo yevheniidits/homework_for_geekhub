@@ -1,0 +1,8 @@
+{% extends 'base_template.html' %}
+
+{% block title %}Deactivated{% endblock %}
+{% block context %}
+    {% for product in products %}
+        <a href="{% url 'details' prod_id=product.id %}">{{ product.title }}</a> <br>
+    {% endfor %}
+{% endblock %}

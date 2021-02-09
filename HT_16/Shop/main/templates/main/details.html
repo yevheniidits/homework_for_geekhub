@@ -1,0 +1,39 @@
+{% extends 'base_template.html' %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block context %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            <input type="submit" name="action" value="Delete">
+            {% if product.is_active %}
+                <input type="submit" name="action" value="Deactivate">
+            {% else %}
+                <input type="submit" name="action" value="Activate">
+            {% endif %}
+            <input type="submit" name="action" value="Edit">
+            <br>
+        {% endif %}
+        {% if product.old_price > product.price %}
+            <s>{{ product.old_price }}</s>
+            <br>
+        {% endif %}
+        <b>{{ product.price }}</b>
+        <br>
+        <img src="{{ product.image.url }}" alt="No image" style="width:500px;height:500px;"/>
+        <br>
+        {% if product.quantity > 0 %}
+            Quantity: {{ product.quantity }}
+            <br>
+            {% if user.is_authenticated %}
+                <input type="submit" name="action" value="Add to cart">
+            {% endif %}
+        {% else %}
+            Not available
+        {% endif %}
+        <br>
+    </form>
+    {{ product.description }}
+
+{% endblock %}
