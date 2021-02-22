@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRAPE IT</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <a href="scraped"><input type="button" value="SCRAPED"></a>
+        <hr>
+        <label for="ad-category">Категория</label>
+        <br>
+        <input type="text" name="ad-category" maxlength="50" placeholder="transport/moto/" required>
+        <br>
+        <label for="number">Количество обьявлений</label>
+        <br>
+        <input type="number" name="ad-number" min="1" step="1" value="1">
+        <br>
+        <input type="submit" name="scrape" value="SCRAPE IT">
+    </form>
+</body>
+</html>
